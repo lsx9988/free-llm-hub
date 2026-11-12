@@ -135,7 +135,9 @@ async def probe_model(
                     data = resp.json()
                 except ValueError:
                     row["status"] = common.STATUS_EMPTY
-                    row["error"] = "响应不是 JSON"
+                    ctype = resp.headers.get("content-type", "?")
+                    snippet = re.sub(r"\s+", " ", (resp.text or ""))[:120]
+                    row["error"] = f"响应不是 JSON (ct={ctype})：{snippet}"
                 else:
                     content = common.extract_content(data)
                     if content:
