@@ -1,0 +1,22 @@
+{
+  "rows": [
+    {
+      "at": "2026-11-12 15:59:08",
+      "live": 2,
+      "tested": 4,
+      "providers_up": 2
+    },
+    {
+      "at": "2026-11-12 16:00:40",
+      "live": 0,
+      "tested": 0,
+      "providers_up": 0
+    },
+    {
+      "at": "2026-11-12 16:01:24",
+      "live": 0,
+      "tested": 0,
+      "providers_up": 0
+    }
+  ]
+}

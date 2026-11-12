@@ -1,0 +1,149 @@
+# ============================================================
+# free-llm-hub 配置
+# 新增一家厂商：在 providers 下加一段 + 在 GitHub Secrets 加一个同名 Key
+# ============================================================
+
+gateway:
+  # 网关对外只认这一个 Key（多个用英文逗号分隔）
+  key_env: GATEWAY_KEY
+  # 网关运行时可从仓库 raw 拉取最新探测结果；留空则只读本地 output/models.json
+  state_url: ""
+  state_refresh_s: 600
+  # 一次请求最多试几个候选模型
+  max_attempts: 4
+  cooldown_s: 180
+  request_timeout_s: 90
+
+probe:
+  prompt: "Reply with exactly: OK"
+  max_tokens: 16
+  timeout_s: 30
+  concurrency: 6
+  # 探测通过的最低分（0~1），低于该分数不进入网关可用池
+  min_score: 0.55
+  max_latency_ms: 15000
+  # 只保留 ok；true 时把被限流(429)的模型标成 degraded 也留在池里
+  keep_degraded: true
+  # 模型名过滤（正则，留空=不过滤）
+  include: ""
+  exclude: "embed|rerank|guard|moderation|safety|tts|asr|whisper"
+
+providers:
+  agnes:
+    label: Agnes AI
+    base_url: https://apihub.agnes-ai.com/v1
+    key_env: AGNES_API_KEY
+    kind: openai
+    weight: 1.0
+    discover: false
+    rpm: 60
+    models:
+      - agnes-3.0-flash
+      - agnes-2.5-flash
+
+  siliconflow:
+    label: 硅基流动
+    base_url: https://api.siliconflow.cn/v1
+    key_env: SILICONFLOW_API_KEY
+    kind: openai
+    weight: 1.0
+    discover: false
+    rpm: 100
+    models:
+      - Qwen/Qwen3-8B
+      - deepseek-ai/DeepSeek-V3
+
+  modelscope:
+    label: 魔搭 ModelScope
+    base_url: https://api-inference.modelscope.cn/v1
+    key_env: MODELSCOPE_API_KEY
+    kind: openai
+    weight: 1.0
+    discover: false
+    rpm: 20
+    models:
+      - Qwen/Qwen3-8B
+
+  zhipu:
+    label: 智谱 GLM
+    base_url: https://open.bigmodel.cn/api/paas/v4
+    key_env: ZHIPU_API_KEY
+    kind: openai
+    weight: 1.0
+    discover: false
+    rpm: 30
+    models:
+      - glm-4-flash
+      - glm-z1-flash
+
+  openrouter:
+    label: OpenRouter
+    base_url: https://openrouter.ai/api/v1
+    key_env: OPENROUTER_API_KEY
+    kind: openai
+    weight: 0.95
+    discover: false
+    rpm: 20
+    models:
+      - "qwen/qwen3.6-plus:free"
+      - "nvidia/nemotron-3.5-nano:free"
+    extra_headers:
+      HTTP-Referer: https://github.com/
+      X-Title: free-llm-hub
+
+  groq:
+    label: Groq
+    base_url: https://api.groq.com/openai/v1
+    key_env: GROQ_API_KEY
+    kind: openai
+    weight: 0.95
+    discover: false
+    rpm: 30
+    models:
+      - llama-3.3-70b-versatile
+      - llama-3.1-8b-instant
+
+  github:
+    label: GitHub Models
+    base_url: https://models.github.ai/inference
+    key_env: GITHUB_MODELS_TOKEN
+    kind: openai
+    weight: 0.9
+    discover: false
+    rpm: 15
+    models:
+      - openai/gpt-4.1-mini
+      - openai/gpt-4o-mini
+
+  gemini:
+    label: Google AI Studio
+    base_url: https://generativelanguage.googleapis.com/v1beta/openai
+    key_env: GEMINI_API_KEY
+    kind: openai
+    weight: 1.0
+    discover: false
+    rpm: 30
+    models:
+      - gemini-2.5-flash
+
+  cloudflare:
+    label: Cloudflare Workers AI
+    base_url: https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/ai/v1
+    key_env: CF_API_TOKEN
+    kind: openai
+    weight: 0.9
+    discover: false
+    rpm: 20
+    models:
+      - "@cf/meta/llama-3.1-8b-instruct"
+
+  cerebras:
+    label: Cerebras
+    base_url: https://api.cerebras.ai/v1
+    key_env: CEREBRAS_API_KEY
+    kind: openai
+    weight: 0.95
+    discover: false
+    rpm: 30
+    models:
+      - llama-3.3-70b

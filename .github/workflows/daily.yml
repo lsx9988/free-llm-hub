@@ -1,0 +1,96 @@
+name: Daily Probe
+
+on:
+  schedule:
+    # 北京时间 09:17（UTC 01:17）
+    - cron: '17 1 * * *'
+    # 北京时间 21:17（UTC 13:17）：补一次，覆盖夜间额度重置
+    - cron: '17 13 * * *'
+  workflow_dispatch:
+    inputs:
+      only:
+        description: '只探测指定厂商（空格分隔，如 agnes zhipu），留空=全部'
+        required: false
+        default: ''
+  # 改脚本或配置后自动跑一次
+  push:
+    paths:
+      - 'scripts/**'
+      - 'config/**'
+      - '.github/workflows/daily.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: daily-probe
+      cancel-in-progress: false
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install deps
+        run: pip install -r requirements.txt
+
+      - name: Run tests
+        run: |
+          pip install -r requirements-dev.txt
+          pytest -q
+
+      - name: Probe free models
+        env:
+          AGNES_API_KEY: ${{ secrets.AGNES_API_KEY }}
+          SILICONFLOW_API_KEY: ${{ secrets.SILICONFLOW_API_KEY }}
+          MODELSCOPE_API_KEY: ${{ secrets.MODELSCOPE_API_KEY }}
+          ZHIPU_API_KEY: ${{ secrets.ZHIPU_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GITHUB_MODELS_TOKEN: ${{ secrets.GITHUB_MODELS_TOKEN }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CEREBRAS_API_KEY: ${{ secrets.CEREBRAS_API_KEY }}
+          PROBE_ONLY: ${{ github.event.inputs.only }}
+        run: |
+          python scripts/probe.py --require-live ${PROBE_ONLY:+--only $PROBE_ONLY}
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A output/ README.md
+          # 无变更时安静退出，不要把 job 标红
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "probe $(date -u +%Y-%m-%dT%H:%MZ)"
+            git push
+          fi
+
+      - name: Purge jsDelivr cache
+        if: always()
+        run: |
+          for f in output/models.json output/status.json; do
+            curl -sS --max-time 20 "https://purge.jsdelivr.net/gh/${{ github.repository }}@main/$f" || true
+            echo "purged $f"
+          done
+          sleep 20
+
+      - name: Upload probe report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: probe-output
+          path: |
+            output/models.json
+            output/status.json
+          retention-days: 14
