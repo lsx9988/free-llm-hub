@@ -146,7 +146,7 @@ python scripts/probe.py --dry-run
 ---
 
 <!-- STATUS_START -->
-> 🔄 最近刷新：2026-11-12 16:24:18（北京时间） · 在线 **0/1** 家 · 可用模型 **0** 个（探测 2 个）
+> 🔄 最近刷新：2026-11-12 16:27:40（北京时间） · 在线 **0/10** 家 · 可用模型 **0** 个（探测 0 个）
 
 > ⚠️ 当前没有可用模型：请在仓库 Settings → Secrets 中配置厂商 API Key，然后到 Actions 页手动跑一次 `Daily Probe`。
 
@@ -158,21 +158,10 @@ python scripts/probe.py --dry-run
 | 智谱 GLM | ⚪ | 0/0 | — | 未配置 Key |
 | OpenRouter | ⚪ | 0/0 | — | 未配置 Key |
 | Groq | ⚪ | 0/0 | — | 未配置 Key |
-| GitHub Models | ❌ | 0/2 | — | 响应不是 JSON (ct=text/plain)：OK  |
+| GitHub Models（2026-07-30 已下线） | ⚪ | 0/0 | — | 模型清单为空 |
 | Google AI Studio | ⚪ | 0/0 | — | 未配置 Key |
 | Cloudflare Workers AI | ⚪ | 0/0 | — | 未配置 Key |
 | Cerebras | ⚪ | 0/0 | — | 未配置 Key |
-
-### 本次被筛掉（2 个）
-
-<details><summary>展开查看原因</summary>
-
-| 模型 | 状态 | 原因 |
-| --- | --- | --- |
-| `github/openai/gpt-4.1-mini` | empty_response | 响应不是 JSON (ct=text/plain)：OK  |
-| `github/openai/gpt-4o-mini` | empty_response | 响应不是 JSON (ct=text/plain)：OK  |
-
-</details>
 <!-- STATUS_END -->
 
 ---
