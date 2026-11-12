@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-11-12T16:05:18+08:00",
-  "generated_at_bj": "2026-11-12 16:05:18",
+  "generated_at": "2026-11-12T16:22:11+08:00",
+  "generated_at_bj": "2026-11-12 16:22:11",
   "stats": {
     "providers_total": 10,
-    "providers_configured": 0,
+    "providers_configured": 1,
     "providers_up": 0,
-    "models_tested": 0,
+    "models_tested": 2,
     "models_live": 0
   },
   "providers": [
@@ -66,11 +66,11 @@
     {
       "id": "github",
       "label": "GitHub Models",
-      "status": "skipped",
-      "tested": 0,
+      "status": "down",
+      "tested": 2,
       "live": 0,
       "latency_ms": null,
-      "error": "未配置 Key"
+      "error": "响应不是 JSON (ct=text/plain)：OK "
     },
     {
       "id": "gemini",
@@ -100,6 +100,44 @@
       "error": "未配置 Key"
     }
   ],
-  "failures": [],
-  "all_models": []
+  "failures": [
+    {
+      "id": "github/openai/gpt-4.1-mini",
+      "provider": "github",
+      "status": "empty_response",
+      "http": 200,
+      "error": "响应不是 JSON (ct=text/plain)：OK "
+    },
+    {
+      "id": "github/openai/gpt-4o-mini",
+      "provider": "github",
+      "status": "empty_response",
+      "http": 200,
+      "error": "响应不是 JSON (ct=text/plain)：OK "
+    }
+  ],
+  "all_models": [
+    {
+      "provider": "github",
+      "upstream": "openai/gpt-4.1-mini",
+      "status": "empty_response",
+      "latency_ms": 258.7,
+      "http": 200,
+      "error": "响应不是 JSON (ct=text/plain)：OK ",
+      "score": 0.0,
+      "checked_at": "2026-11-12 16:22:11",
+      "id": "github/openai/gpt-4.1-mini"
+    },
+    {
+      "provider": "github",
+      "upstream": "openai/gpt-4o-mini",
+      "status": "empty_response",
+      "latency_ms": 233.6,
+      "http": 200,
+      "error": "响应不是 JSON (ct=text/plain)：OK ",
+      "score": 0.0,
+      "checked_at": "2026-11-12 16:22:11",
+      "id": "github/openai/gpt-4o-mini"
+    }
+  ]
 }
