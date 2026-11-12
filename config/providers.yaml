@@ -85,8 +85,8 @@ providers:
     discover: false
     rpm: 20
     models:
-      - "qwen/qwen3.6-plus:free"
-      - "nvidia/nemotron-3.5-nano:free"
+      - "baidu/ernie-5.5-flash-preview:free"
+      - "google/gemma-4-31b-it:free"
     extra_headers:
       HTTP-Referer: https://github.com/
       X-Title: free-llm-hub
