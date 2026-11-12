@@ -43,7 +43,7 @@ git push -u origin main
 | `ZHIPU_API_KEY` | open.bigmodel.cn | GLM-4-Flash 永久免费 |
 | `OPENROUTER_API_KEY` | openrouter.ai/keys | `:free` 模型 |
 | `GROQ_API_KEY` | console.groq.com | 速度快 |
-| `GITHUB_MODELS_TOKEN` | GitHub PAT（勾 `models:read`） | GPT-4.1-mini 等 |
+| ~~`GITHUB_MODELS_TOKEN`~~ | ~~GitHub PAT（勾 `models:read`）~~ | **已下线**：GitHub Models 于 2026-07-30 停服，端点只返回 `OK` 占位，配置中已置空 |
 | `GEMINI_API_KEY` | aistudio.google.com | 每天 1440 次 |
 | `CF_API_TOKEN` / `CF_ACCOUNT_ID` | Cloudflare Dashboard | Workers AI |
 | `CEREBRAS_API_KEY` | cloud.cerebras.ai | 高速推理 |

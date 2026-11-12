@@ -104,16 +104,18 @@ providers:
       - llama-3.1-8b-instant
 
   github:
-    label: GitHub Models
+    # GitHub Models 已于 2026-07-30 正式下线（GitHub 官方 changelog）：
+    # playground、模型目录、推理 API、BYOK 全部停用。
+    # 端点现在对任何请求只返回 text/plain 的 "OK" 占位，无法推理。
+    # 保留这段仅作记录，models 置空即不进池、不消耗探测。
+    label: GitHub Models（2026-07-30 已下线）
     base_url: https://models.github.ai/inference
     key_env: GITHUB_MODELS_TOKEN
     kind: openai
-    weight: 0.9
+    weight: 0.0
     discover: false
-    rpm: 15
-    models:
-      - openai/gpt-4.1-mini
-      - openai/gpt-4o-mini
+    rpm: 0
+    models: []
 
   gemini:
     label: Google AI Studio

@@ -21,8 +21,6 @@ on:
 
 permissions:
   contents: write
-  # 内置 GITHUB_TOKEN 直接调 GitHub Models，不需要单独建 PAT
-  models: read
 
 jobs:
   probe:
@@ -66,18 +64,6 @@ jobs:
           PROBE_ONLY: ${{ github.event.inputs.only }}
         run: |
           python scripts/probe.py --require-live ${PROBE_ONLY:+--only $PROBE_ONLY}
-
-      - name: Debug models endpoint
-        if: always()
-        env:
-          TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          echo "token_prefix=${TOKEN:0:4} len=${#TOKEN}"
-          curl -sS -i --max-time 30 -X POST "https://models.github.ai/inference/chat/completions" \
-            -H "Authorization: Bearer $TOKEN" -H "Content-Type: application/json" -H "Accept: application/json" \
-            -d '{"model":"openai/gpt-4.1-mini","messages":[{"role":"user","content":"say hi"}],"max_tokens":8}' | head -40
-          echo "---- catalog ----"
-          curl -sS -i --max-time 30 "https://models.github.ai/catalog/models" -H "Authorization: Bearer $TOKEN" | head -12
 
       - name: Commit changes
         if: always()
