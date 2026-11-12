@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-11-12T16:27:40+08:00",
-  "generated_at_bj": "2026-11-12 16:27:40",
+  "generated_at": "2026-11-12T16:56:27+08:00",
+  "generated_at_bj": "2026-11-12 16:56:27",
   "stats": {
     "providers_total": 10,
-    "providers_configured": 0,
-    "providers_up": 0,
-    "models_tested": 0,
-    "models_live": 0
+    "providers_configured": 1,
+    "providers_up": 1,
+    "models_tested": 2,
+    "models_live": 2
   },
   "providers": [
     {
@@ -48,11 +48,11 @@
     {
       "id": "openrouter",
       "label": "OpenRouter",
-      "status": "skipped",
-      "tested": 0,
-      "live": 0,
-      "latency_ms": null,
-      "error": "未配置 Key"
+      "status": "up",
+      "tested": 2,
+      "live": 2,
+      "latency_ms": 1026.2,
+      "error": null
     },
     {
       "id": "groq",
@@ -101,5 +101,28 @@
     }
   ],
   "failures": [],
-  "all_models": []
+  "all_models": [
+    {
+      "provider": "openrouter",
+      "upstream": "baidu/ernie-5.5-flash-preview:free",
+      "status": "ok",
+      "latency_ms": 1373.3,
+      "http": 200,
+      "error": null,
+      "score": 0.915,
+      "checked_at": "2026-11-12 16:56:27",
+      "id": "openrouter/baidu/ernie-5.5-flash-preview:free"
+    },
+    {
+      "provider": "openrouter",
+      "upstream": "google/gemma-4-31b-it:free",
+      "status": "ok",
+      "latency_ms": 1026.2,
+      "http": 200,
+      "error": null,
+      "score": 0.924,
+      "checked_at": "2026-11-12 16:56:27",
+      "id": "openrouter/google/gemma-4-31b-it:free"
+    }
+  ]
 }

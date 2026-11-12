@@ -146,9 +146,7 @@ python scripts/probe.py --dry-run
 ---
 
 <!-- STATUS_START -->
-> 🔄 最近刷新：2026-11-12 16:27:40（北京时间） · 在线 **0/10** 家 · 可用模型 **0** 个（探测 0 个）
-
-> ⚠️ 当前没有可用模型：请在仓库 Settings → Secrets 中配置厂商 API Key，然后到 Actions 页手动跑一次 `Daily Probe`。
+> 🔄 最近刷新：2026-11-12 16:56:27（北京时间） · 在线 **1/1** 家 · 可用模型 **2** 个（探测 2 个）
 
 | 厂商 | 状态 | 可用/探测 | 最快延迟 | 备注 |
 | --- | :---: | :---: | :---: | --- |
@@ -156,12 +154,19 @@ python scripts/probe.py --dry-run
 | 硅基流动 | ⚪ | 0/0 | — | 未配置 Key |
 | 魔搭 ModelScope | ⚪ | 0/0 | — | 未配置 Key |
 | 智谱 GLM | ⚪ | 0/0 | — | 未配置 Key |
-| OpenRouter | ⚪ | 0/0 | — | 未配置 Key |
+| OpenRouter | ✅ | 2/2 | 1026ms | — |
 | Groq | ⚪ | 0/0 | — | 未配置 Key |
 | GitHub Models（2026-07-30 已下线） | ⚪ | 0/0 | — | 模型清单为空 |
 | Google AI Studio | ⚪ | 0/0 | — | 未配置 Key |
 | Cloudflare Workers AI | ⚪ | 0/0 | — | 未配置 Key |
 | Cerebras | ⚪ | 0/0 | — | 未配置 Key |
+
+### 当前最快模型 TOP 10
+
+| 排名 | 模型 ID | 厂商 | 延迟 | 分数 |
+| :---: | --- | --- | :---: | :---: |
+| 1 | `openrouter/google/gemma-4-31b-it:free` | openrouter | 1026ms | 0.92 |
+| 2 | `openrouter/baidu/ernie-5.5-flash-preview:free` | openrouter | 1373ms | 0.92 |
 <!-- STATUS_END -->
 
 ---
