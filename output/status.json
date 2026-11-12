@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-11-12T16:22:11+08:00",
-  "generated_at_bj": "2026-11-12 16:22:11",
+  "generated_at": "2026-11-12T16:24:18+08:00",
+  "generated_at_bj": "2026-11-12 16:24:18",
   "stats": {
     "providers_total": 10,
     "providers_configured": 1,
@@ -121,22 +121,22 @@
       "provider": "github",
       "upstream": "openai/gpt-4.1-mini",
       "status": "empty_response",
-      "latency_ms": 258.7,
+      "latency_ms": 209.1,
       "http": 200,
       "error": "响应不是 JSON (ct=text/plain)：OK ",
       "score": 0.0,
-      "checked_at": "2026-11-12 16:22:11",
+      "checked_at": "2026-11-12 16:24:18",
       "id": "github/openai/gpt-4.1-mini"
     },
     {
       "provider": "github",
       "upstream": "openai/gpt-4o-mini",
       "status": "empty_response",
-      "latency_ms": 233.6,
+      "latency_ms": 195.4,
       "http": 200,
       "error": "响应不是 JSON (ct=text/plain)：OK ",
       "score": 0.0,
-      "checked_at": "2026-11-12 16:22:11",
+      "checked_at": "2026-11-12 16:24:18",
       "id": "github/openai/gpt-4o-mini"
     }
   ]
