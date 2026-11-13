@@ -1,8 +1,8 @@
 {
   "version": 1,
-  "generated_at": "2026-11-12T16:56:27+08:00",
-  "generated_at_bj": "2026-11-12 16:56:27",
-  "git_sha": "aafcb47",
+  "generated_at": "2026-11-13T13:38:29+08:00",
+  "generated_at_bj": "2026-11-13 13:38:29",
+  "git_sha": "17a723d",
   "stats": {
     "providers_total": 10,
     "providers_configured": 1,
@@ -52,8 +52,8 @@
       "label": "OpenRouter",
       "status": "up",
       "tested": 2,
-      "live": 2,
-      "latency_ms": 1026.2,
+      "live": 1,
+      "latency_ms": 1284.8,
       "error": null
     },
     {
@@ -105,25 +105,25 @@
   "models": [
     {
       "provider": "openrouter",
-      "upstream": "google/gemma-4-31b-it:free",
+      "upstream": "baidu/ernie-5.5-flash-preview:free",
       "status": "ok",
-      "latency_ms": 1026.2,
+      "latency_ms": 1284.8,
       "http": 200,
       "error": null,
-      "score": 0.924,
-      "checked_at": "2026-11-12 16:56:27",
-      "id": "openrouter/google/gemma-4-31b-it:free"
+      "score": 0.917,
+      "checked_at": "2026-11-13 13:38:29",
+      "id": "openrouter/baidu/ernie-5.5-flash-preview:free"
     },
     {
       "provider": "openrouter",
-      "upstream": "baidu/ernie-5.5-flash-preview:free",
-      "status": "ok",
-      "latency_ms": 1373.3,
-      "http": 200,
-      "error": null,
-      "score": 0.915,
-      "checked_at": "2026-11-12 16:56:27",
-      "id": "openrouter/baidu/ernie-5.5-flash-preview:free"
+      "upstream": "google/gemma-4-31b-it:free",
+      "status": "degraded",
+      "latency_ms": 234.4,
+      "http": 429,
+      "error": "Provider returned error",
+      "score": 0.33,
+      "checked_at": "2026-11-13 13:38:29",
+      "id": "openrouter/google/gemma-4-31b-it:free"
     }
   ]
 }

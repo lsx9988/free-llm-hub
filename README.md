@@ -146,7 +146,7 @@ python scripts/probe.py --dry-run
 ---
 
 <!-- STATUS_START -->
-> 🔄 最近刷新：2026-11-12 16:56:27（北京时间） · 在线 **1/1** 家 · 可用模型 **2** 个（探测 2 个）
+> 🔄 最近刷新：2026-11-13 13:38:29（北京时间） · 在线 **1/1** 家 · 可用模型 **2** 个（探测 2 个）
 
 | 厂商 | 状态 | 可用/探测 | 最快延迟 | 备注 |
 | --- | :---: | :---: | :---: | --- |
@@ -154,7 +154,7 @@ python scripts/probe.py --dry-run
 | 硅基流动 | ⚪ | 0/0 | — | 未配置 Key |
 | 魔搭 ModelScope | ⚪ | 0/0 | — | 未配置 Key |
 | 智谱 GLM | ⚪ | 0/0 | — | 未配置 Key |
-| OpenRouter | ✅ | 2/2 | 1026ms | — |
+| OpenRouter | ✅ | 1/2 | 1284ms | — |
 | Groq | ⚪ | 0/0 | — | 未配置 Key |
 | GitHub Models（2026-07-30 已下线） | ⚪ | 0/0 | — | 模型清单为空 |
 | Google AI Studio | ⚪ | 0/0 | — | 未配置 Key |
@@ -165,8 +165,8 @@ python scripts/probe.py --dry-run
 
 | 排名 | 模型 ID | 厂商 | 延迟 | 分数 |
 | :---: | --- | --- | :---: | :---: |
-| 1 | `openrouter/google/gemma-4-31b-it:free` | openrouter | 1026ms | 0.92 |
-| 2 | `openrouter/baidu/ernie-5.5-flash-preview:free` | openrouter | 1373ms | 0.92 |
+| 1 | `openrouter/baidu/ernie-5.5-flash-preview:free` | openrouter | 1284ms | 0.92 |
+| 2 | `openrouter/google/gemma-4-31b-it:free` | openrouter | 234ms | 0.33 |
 <!-- STATUS_END -->
 
 ---
